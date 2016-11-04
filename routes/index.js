@@ -33,4 +33,16 @@ router.post('/insert', function(req, res) {
    });
 });
 
+//delete a todo item
+router.post('/delete', function(req, res) {
+  pg.connect(process.env.DATABASE_URL, function(err, client) {
+     if (err) throw err;
+     client
+       .query('DELETE FROM todo WHERE pk_id='+req.body.id)
+       .on('end', function(){
+         res.send('success');
+       });
+   });
+});
+
 module.exports = router;

@@ -9,7 +9,10 @@
 <ul class="collapsible" data-collapsible="accordion">
   {{#each list}}
       <li>
-        <div class="collapsible-header">{{this.title}}</div>
+        <div class="collapsible-header">
+          {{this.title}}
+          <button class="btn right" onclick="deleteitem({{this.pk_id}})">Delete</button>
+        </div>
         <div class="collapsible-body"><p>{{this.description}}</p></div>
       </li>
   {{/each}}

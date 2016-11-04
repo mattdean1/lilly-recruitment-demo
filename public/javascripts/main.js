@@ -7,3 +7,10 @@ function submit(){
     location.reload(true);
   });
 }
+
+function deleteitem(id){
+  //$.post(url, data, callback)
+  $.post('/delete', {id: id}, function(){
+    location.reload(true);
+  });
+}
