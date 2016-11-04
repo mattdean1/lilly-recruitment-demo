@@ -10,7 +10,16 @@
   {{#each list}}
       <li>
         <div class="collapsible-header">
-          {{this.title}}
+          {{#if this.done}}
+            <input type="checkbox" id="{{this.pk_id}}" checked="checked">
+            <label for="{{this.pk_id}}" onclick="update({{this.pk_id}}, {{this.done}})"></label>
+            <strike>{{this.title}}</strike>
+          {{else}}
+            <input type="checkbox" id="{{this.pk_id}}">
+            <label for="{{this.pk_id}}" onclick="update({{this.pk_id}}, {{this.done}})"></label>
+            {{this.title}}
+          {{/if}}
+
           <button class="btn right" onclick="deleteitem({{this.pk_id}})">Delete</button>
         </div>
         <div class="collapsible-body"><p>{{this.description}}</p></div>
