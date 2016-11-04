@@ -4,7 +4,13 @@ var router = express.Router();
 var todolist = [{title: "todo1", description: "desc1"}, {title: "todo2", description: "desc2"}, {title: "todo3", description: "desc3"}];
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
+  res.render('index', { list: todolist });
+});
+
+//post /insert
+router.post('/insert', function(req, res) {
+  todolist.push({title: req.body.title, description: req.body.description});
   res.render('index', { list: todolist });
 });
 
